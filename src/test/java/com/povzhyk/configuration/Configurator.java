@@ -52,14 +52,14 @@ public class Configurator {
 
 
 
-    public static Configuration setDefaultConfig(){
+    public static Configuration setDefaultConfig(String user, String password, String host){
 
         Configuration config = new Configuration();
-        config.setUser("def_user");
-        config.setPassword("def_pass");
-        config.setHost("https://cooker.net.ua/");
+        config.setUser(user);
+        config.setPassword(password);
+        config.setHost(host);
 
-        System.out.println("Default Configuration is set");
+        System.out.println("Configuration is set");
 
 
         return config;
