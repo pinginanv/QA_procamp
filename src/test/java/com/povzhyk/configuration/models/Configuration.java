@@ -3,18 +3,13 @@ package com.povzhyk.configuration.models;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
+@Setter
 public class Configuration {
 
-    @Getter
-    @Setter
+
     private String User;
-
-    @Getter
-    @Setter
     private String password;
-
-    @Getter
-    @Setter
     private String host;
 
     public Configuration(String user, String password, String host) {

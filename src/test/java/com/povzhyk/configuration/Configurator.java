@@ -12,29 +12,21 @@ import java.util.Map;
 
 public class Configurator {
 
+//set config variables via YAML file
     public static Configuration readResourseConfigFromYaml(String configFile) throws IOException {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         File file = new File(classLoader.getResource(configFile).getFile());
 
-
-        // Instantiating a new ObjectMapper as a YAMLFactory
         ObjectMapper om = new ObjectMapper(new YAMLFactory());
-
-// Mapping the employee from the YAML file to the Employee class
         Configuration config = om.readValue(file, Configuration.class);
 
-// Printing out the information
         System.out.println("Config info " + config.toString());
-
-// Access the first element of the list and print it as well
-        System.out.println("Accessing User element: " + config.getUser().toString());
-
         System.out.println("Configuration from Yaml uploaded");
 
         return config;
     }
 
-
+//set config variables via Environment variables
     public static Configuration setConfigViaEnvVars(){
 
         Map<String, String> env = System.getenv();
@@ -51,7 +43,7 @@ public class Configurator {
     }
 
 
-
+//set config variables inside Config class
     public static Configuration setDefaultConfig(String user, String password, String host){
 
         Configuration config = new Configuration();
