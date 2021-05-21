@@ -38,12 +38,7 @@ public class Configurator {
     public static Configuration setConfigViaEnvVars(){
 
         Map<String, String> env = System.getenv();
-        for (String envName : env.keySet()) {
-            System.out.format("%s=%s%n",
-                    envName,
-                    env.get(envName));
-        }
-
+        
         Configuration config = new Configuration();
         config.setUser(env.get("user"));
         config.setPassword(env.get("password"));

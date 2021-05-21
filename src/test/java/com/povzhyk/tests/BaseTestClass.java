@@ -23,6 +23,7 @@ import java.io.IOException;
 @Listeners({MNExtentReportListener.class,MyListener.class, HTMLReporter.class})
 public class BaseTestClass {
     protected WebDriver driver = null;
+    protected Configuration configuration = null;
 
     @BeforeSuite
     public void beforeSuite() throws IOException {
@@ -30,7 +31,7 @@ public class BaseTestClass {
         reCreateScreenshotFolder();
         driver = WebDriverHolder.getDriver();
 
-        Configuration configuration = Configurator.setConfigViaEnvVars();
+        configuration = Configurator.setConfigViaEnvVars();
         System.out.println(configuration.getUser());
         EndPoints.BASE_URL = configuration.getHost();
     }
@@ -60,6 +61,10 @@ public class BaseTestClass {
             FileUtils.forceDelete(schreenshotFolder);
         }
         FileUtils.forceMkdir(schreenshotFolder);
+    }
+
+    public Configuration getConfiguration(){
+        return configuration;
     }
 
 }
