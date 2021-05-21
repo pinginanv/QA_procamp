@@ -12,9 +12,9 @@ import java.util.Map;
 
 public class Configurator {
 
-    public static Configuration readResourseConfigFromYaml() throws IOException {
+    public static Configuration readResourseConfigFromYaml(String configFile) throws IOException {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        File file = new File(classLoader.getResource("qa.yaml").getFile());
+        File file = new File(classLoader.getResource(configFile).getFile());
 
 
         // Instantiating a new ObjectMapper as a YAMLFactory
@@ -38,7 +38,7 @@ public class Configurator {
     public static Configuration setConfigViaEnvVars(){
 
         Map<String, String> env = System.getenv();
-        
+
         Configuration config = new Configuration();
         config.setUser(env.get("user"));
         config.setPassword(env.get("password"));

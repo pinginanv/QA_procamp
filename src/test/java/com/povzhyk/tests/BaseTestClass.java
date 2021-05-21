@@ -31,7 +31,7 @@ public class BaseTestClass {
         reCreateScreenshotFolder();
         driver = WebDriverHolder.getDriver();
 
-        configuration = Configurator.setConfigViaEnvVars();
+        configuration = Configurator.readResourseConfigFromYaml("qa.yaml");
         System.out.println(configuration.getUser());
         EndPoints.BASE_URL = configuration.getHost();
     }
